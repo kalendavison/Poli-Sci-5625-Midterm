@@ -3,10 +3,7 @@ rm(list=ls())
 library(devtools)
 library(roxygen2)
 
-#Function development
-
-testSubject = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
-testSubject
+### Function development
 
 # Probability function
 Probability = function(raschObj, theta){
@@ -31,7 +28,16 @@ Probability = function(raschObj, theta){
   return(list(P, PQ))
 }
 
-Probability(raschObj = thing, theta = .5)
+# Likelihood function
+Likelihood = function(raschObj, theta){
+  PQ = Probability(raschObj, theta)[[2]]
+  
+  for (i in length(raschObj@difficulty)){
+    if (raschObj@answers[i] == 1){
+      PQ[i] = PQ[i]
+    }
+  }
+}
 
 #Build and check out the package
 package.skeleton()
@@ -40,3 +46,11 @@ current.code<-as.package("easyRasch")
 load_all(current.code)
 document(current.code)
 check(current.code)
+
+## Examples
+testSubject = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
+Probability(raschObj = testSubject, theta = 2) 
+# probability may not make sense in context because I don't know what the range of theta and difficulty is supposed to be
+
+
+
