@@ -8,19 +8,19 @@ library(roxygen2)
 # Probability function
 Probability = function(raschObj, theta){
   P = vector("numeric", length(raschObj@answers))
-  PQ = vector("numeric", length(raschObj@answers))
+  PQ = vector("numeric", length(raschObj@answers)) #create two blank vectors, one for each output
   
   for (i in 1:length(raschObj@answers)){
-    prob = (exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
+    prob = (exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i])) #calculates prob not taking into account answer
     P[i] = prob
   }
   
   for (i in 1:length(raschObj@answers)){
-    if (raschObj@answers[i] == 1){
+    if (raschObj@answers[i] == 1){ #calculate prob given answer is correct
       right = (exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
       PQ[i] = right
     }
-    else {
+    else { #calculate prob given answer is not correct
       wrong = 1-(exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
       PQ[i] = wrong
     }
@@ -34,9 +34,14 @@ Likelihood = function(raschObj, theta){
   
   for (i in length(raschObj@difficulty)){
     if (raschObj@answers[i] == 1){
-      PQ[i] = PQ[i]
+      PQ[i] = (PQ[i]^(raschObj@answers[i]))
+    }
+    else {
+      PQ[i] = (PQ[i]^(1-raschObj@answers[i]))
     }
   }
+  likelihood = prod(PQ)
+  return(likelihood)
 }
 
 #Build and check out the package
@@ -48,9 +53,11 @@ document(current.code)
 check(current.code)
 
 ## Examples
-testSubject = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
+testSubject = new("Rasch", name = "Benny", difficulty = sample(1:5, 10, replace = TRUE), answers = sample(0:1, 10, replace=TRUE))
 Probability(raschObj = testSubject, theta = 2) 
 # probability may not make sense in context because I don't know what the range of theta and difficulty is supposed to be
 
+Likelihood(testSubject, .8) 
+#seems to work but again doesn't  make sense in context because I'm not sure what scale the difference and theta should be on. 
 
 
