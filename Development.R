@@ -50,6 +50,25 @@ Prior <- function(theta){
   return(height)
 }
 
+#EAP function
+EAP = function(raschObj, lower = 6, upper = 6){
+  
+  num = function(theta, raschObj){
+    n = theta * Likelihood(theta, raschObj) * Prior(theta)
+  }
+  
+  denom = function(theta, raschObj){
+    d = Likelihood(theta, raschObj) * Prior(theta)
+  }
+  
+  numerator = integrate(num, lower = lower, upper = upper)
+  denominator = integrate(denom, lower = lower, upper = upper)
+  ability_estimate = numerator/denominator
+  return(ability_estimate)
+}
+
+EAP(testSubject)
+
 #Build and check out the package
 package.skeleton()
 setwd("/Users/kalendavison/Desktop/Applied Statistical Programming/GitHub/Poli-Sci-5625-Midterm/Master") #directory above package
