@@ -8,7 +8,7 @@
 #' @return A numeric
 #'  \item{ability_estimate}{An estimate of the subject's ability}
 #' @author Kalen Davison: \email{davison@wustl.edu}
-#' @note I do not really understand the math here and am likely to have done this wrong.
+#' @note I do not really understand the math here so I may have done this wrong.
 #' @examples
 #' 
 #' @seealso \code{\link{raschClass}}
@@ -20,7 +20,7 @@ setGeneric("EAP", #create a generic in S4
              standardGeneric("EAP")
            } )
 
-setMethod("EAP", 
+setMethod(f = "EAP", signature = ("Rasch"),
           definition = function(raschObj, lower = 6, upper = 6){
             num = function(raschObj, theta){ #create the function in the numerator
               n = theta * Likelihood(raschObj, theta) * Prior(theta)

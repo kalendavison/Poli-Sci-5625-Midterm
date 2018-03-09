@@ -23,7 +23,7 @@ setGeneric("Probability", #create S4 generic
              standardGeneric("Probability")
            } )
 
-setMethod(f="Probability", c("Rasch", "numeric"),
+setMethod(f="Probability",
   definition = function(raschObj, theta){
   P = vector("numeric", length(raschObj@answers)) 
   PQ = vector("numeric", length(raschObj@answers))

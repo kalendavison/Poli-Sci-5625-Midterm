@@ -22,7 +22,7 @@ setGeneric("Likelihood",
              standardGeneric("Likelihood")
            } )
 
-setMethod(f = "Likelihood",
+setMethod(f = "Likelihood", signature = c("Rasch", "numeric"),
           definition = function(raschObj = "Rasch", theta = "numeric"){
             PQ = Probability(raschObj, theta)[[2]]
             

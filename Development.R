@@ -2,6 +2,7 @@
 rm(list=ls())
 library(devtools)
 library(roxygen2)
+package.skeleton()
 
 ### Function development
 
@@ -74,21 +75,27 @@ EAP(testSubject) #do not understand why it isn't working
 # Print method embedded in S4 package structure
 
 #Build and check out the package
-package.skeleton()
 setwd("/Users/kalendavison/Desktop/Applied Statistical Programming/GitHub/Poli-Sci-5625-Midterm/Master") #directory above package
 current.code<-as.package("easyRasch")
 load_all(current.code)
 document(current.code)
 check(current.code)
 
+?Likelihood
+?Probability
+?EAP #error says rdFile must be a single element character vector?
+
 ## Examples
-testSubject = new("Rasch", name = "Benny", difficulty = sample(1:5, 10, replace = TRUE), answers = sample(0:1, 10, replace=TRUE))
+testSubject = new("Rasch", name = "Benny", difficulty = sample(c(.2, .4, 1.7, 1.3, 1.6, 1.6, 5.6), 10, replace = TRUE), answers = sample(0:1, 10, replace=TRUE))
 Probability(raschObj = testSubject, theta = 2) 
 # probability may not make sense in context because I don't know what the range of theta and difficulty is supposed to be
 
-Likelihood(testSubject, .8) 
-#seems to work but again doesn't  make sense in context because I'm not sure what scale the difference and theta should be on. 
+Likelihood(testSubject, .28) 
+#seems to work but again doesn't make sense in context because I'm not sure what scale the difference and theta should be on. 
 
 Prior(theta = 1)
 
-EAP(testSubject)
+EAP(testSubject) 
+# I can't figure out what the error message means so it's not running, but it seems like it should work.
+
+print(testSubject)

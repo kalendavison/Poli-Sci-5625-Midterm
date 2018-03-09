@@ -20,7 +20,7 @@ A numeric
 Estimates the ability of the subject
 }
 \note{
-I do not really understand the math here and am likely to have done this wrong.
+I do not really understand the math here so I may have done this wrong.
 }
 \examples{
 
