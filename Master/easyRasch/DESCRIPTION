@@ -1,0 +1,13 @@
+Package: easyRasch
+Title: Rasch Model Calculations
+Version: 1.0
+Date: 2018-03-09
+Author: Kalen Davison
+Maintainer: Kalen Davison <davison@wustl.edu>
+Description: Calculates probability of a given person answering a question correctly, the likelihood of a proposed ability value, and an estimation of a person's ability
+Depends:
+    R (>= 3.0.0),
+    methods
+License: GPL (>= 2)
+Suggests:
+    devtools

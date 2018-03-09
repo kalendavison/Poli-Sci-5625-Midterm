@@ -8,6 +8,7 @@ library(roxygen2)
 testSubject = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
 testSubject
 
+# Probability function
 Probability = function(raschObj, theta){
   P = vector("numeric", length(raschObj@answers))
   PQ = vector("numeric", length(raschObj@answers))
@@ -32,3 +33,10 @@ Probability = function(raschObj, theta){
 
 Probability(raschObj = thing, theta = .5)
 
+#Build and check out the package
+package.skeleton()
+setwd("/Users/kalendavison/Desktop/Applied Statistical Programming/GitHub/Poli-Sci-5625-Midterm/Master") #directory above package
+current.code<-as.package("easyRasch")
+load_all(current.code)
+document(current.code)
+check(current.code)
