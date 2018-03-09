@@ -71,6 +71,8 @@ EAP = function(raschObj, lower = 6, upper = 6){
 
 EAP(testSubject) #do not understand why it isn't working
 
+# Print method embedded in S4 package structure
+
 #Build and check out the package
 package.skeleton()
 setwd("/Users/kalendavison/Desktop/Applied Statistical Programming/GitHub/Poli-Sci-5625-Midterm/Master") #directory above package

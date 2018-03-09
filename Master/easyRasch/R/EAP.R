@@ -11,8 +11,6 @@
 #' @note I do not really understand the math here and am likely to have done this wrong.
 #' @examples
 #' 
-#' testRasch = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
-#' EAP(raschObj = testRasch, theta = .5)
 #' @seealso \code{\link{raschClass}}
 #' @rdname EAP
 #' @aliases Print
