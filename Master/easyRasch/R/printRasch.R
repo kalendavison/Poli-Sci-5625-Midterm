@@ -20,8 +20,8 @@
 
 setMethod("print", "Rasch",
           function(x){
-            name = x@name
-            ability_estimate = EAP(x, 6, 6)
+            name = x@name #return name of subject
+            ability_estimate = EAP(x, 6, 6) #return EAP estimation of ability
             print(c(name, ability_estimate))
             }
 )

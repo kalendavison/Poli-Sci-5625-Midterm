@@ -23,7 +23,7 @@ setGeneric("Prior",
 
 setMethod(f = "Prior",
           definition = function(theta){
-            height = dnorm(x = theta, mean = 0, sd = 3)
+            height = dnorm(x = theta, mean = 0, sd = 3) #calculates height of normal curve at theta 
             return(height)
           }
             )

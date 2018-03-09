@@ -18,17 +18,17 @@
 #' @rdname Probability
 #' @aliases Print
 #' @export
-setGeneric("Probability", 
+setGeneric("Probability", #create S4 generic
            function(raschObj = "Rasch", theta = "numeric") {
              standardGeneric("Probability")
            } )
 
 setMethod(f="Probability", c("Rasch", "numeric"),
   definition = function(raschObj, theta){
-  P = vector("numeric", length(raschObj@answers))
+  P = vector("numeric", length(raschObj@answers)) 
   PQ = vector("numeric", length(raschObj@answers))
   
-  for (i in 1:length(raschObj@answers)){
+  for (i in 1:length(raschObj@answers)){ 
     prob = (exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
     P[i] = prob
   }

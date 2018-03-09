@@ -30,17 +30,17 @@ Probability = function(raschObj, theta){
 
 # Likelihood function
 Likelihood = function(raschObj, theta){
-  PQ = Probability(raschObj, theta)[[2]]
+  PQ = Probability(raschObj, theta)[[2]] #gets only the second list from Probability function
   
-  for (i in length(raschObj@difficulty)){
-    if (raschObj@answers[i] == 1){
+  for (i in length(raschObj@difficulty)){ 
+    if (raschObj@answers[i] == 1){ #if answer is right
       PQ[i] = (PQ[i]^(raschObj@answers[i]))
     }
-    else {
-      PQ[i] = (PQ[i]^(1-raschObj@answers[i]))
+    else { #if answer is wrong
+      PQ[i] = (PQ[i]^(1-raschObj@answers[i])) #calculates probabilities given respondent's answers
     }
   }
-  likelihood = prod(PQ)
+  likelihood = prod(PQ) #takes product of all the numbers in the vector
   return(likelihood)
 }
 
@@ -91,3 +91,4 @@ Likelihood(testSubject, .8)
 
 Prior(theta = 1)
 
+EAP(testSubject)
