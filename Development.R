@@ -53,16 +53,18 @@ Prior <- function(theta){
 #EAP function
 EAP = function(raschObj, lower = 6, upper = 6){
   
-  num = function(theta, raschObj){
-    n = theta * Likelihood(theta, raschObj) * Prior(theta)
+  num = function(raschObj, theta){
+    n = theta * Likelihood(raschObj, theta) * Prior(theta)
+    return(num)
   }
   
-  denom = function(theta, raschObj){
-    d = Likelihood(theta, raschObj) * Prior(theta)
+  denom = function(raschObj, theta){
+    d = Likelihood(raschObj, theta) * Prior(theta)
+    return(denom)
   }
   
-  numerator = integrate(num, lower = lower, upper = upper)
-  denominator = integrate(denom, lower = lower, upper = upper)
+  numerator = integrate(num, lower = lower, upper = upper, raschObj)
+  denominator = integrate(denom, lower = lower, upper = upper, raschObj)
   ability_estimate = numerator/denominator
   return(ability_estimate)
 }
@@ -86,3 +88,4 @@ Likelihood(testSubject, .8)
 #seems to work but again doesn't  make sense in context because I'm not sure what scale the difference and theta should be on. 
 
 Prior(theta = 1)
+

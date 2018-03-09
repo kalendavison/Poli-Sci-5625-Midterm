@@ -26,11 +26,11 @@ setMethod(f = "Likelihood",
           definition = function(raschObj = "Rasch", theta = "numeric"){
             PQ = Probability(raschObj, theta)[[2]]
             
-            for (i in length(raschObj@difficulty)){
+            for (i in length(raschObj@answers)){
               if (raschObj@answers[i] == 1){
                 PQ[i] = (PQ[i]^(raschObj@answers[i]))
               }
-              else {
+              if (raschObj@answers[i] == 0){
                 PQ[i] = (PQ[i]^(1-raschObj@answers[i]))
               }
             }

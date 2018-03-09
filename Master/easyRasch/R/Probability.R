@@ -23,7 +23,7 @@ setGeneric("Probability",
              standardGeneric("Probability")
            } )
 
-setMethod(f="Probability", 
+setMethod(f="Probability", c("Rasch", "numeric"),
   definition = function(raschObj, theta){
   P = vector("numeric", length(raschObj@answers))
   PQ = vector("numeric", length(raschObj@answers))
@@ -38,7 +38,7 @@ setMethod(f="Probability",
       right = (exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
       PQ[i] = right
     }
-    else {
+    if (raschObj@answers[i] == 0){
       wrong = 1-(exp(theta-raschObj@difficulty[i]))/(1+(theta-raschObj@difficulty[i]))
       PQ[i] = wrong
     }
