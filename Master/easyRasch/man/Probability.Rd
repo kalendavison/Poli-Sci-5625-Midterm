@@ -26,7 +26,7 @@ Theta value can be manually chosen.
 \examples{
 
 testRasch = new("Rasch", name = "Benny", difficulty = 1:10, answers = sample(0:1, 10, replace=TRUE))
-Probability(raschObj = thing, theta = .5)
+Probability(raschObj = testRasch, theta = .5)
 }
 \seealso{
 \code{\link{raschClass}}
