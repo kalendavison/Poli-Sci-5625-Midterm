@@ -20,7 +20,7 @@ setGeneric("EAP", #create a generic in S4
              standardGeneric("EAP")
            } )
 
-setMethod(f = "EAP", signature = ("Rasch"),
+setMethod(f = "EAP", signature = c("Rasch", "numeric", "numeric"),
           definition = function(raschObj, lower = 6, upper = 6){
             num = function(raschObj, theta){ #create the function in the numerator
               n = theta * Likelihood(raschObj, theta) * Prior(theta)

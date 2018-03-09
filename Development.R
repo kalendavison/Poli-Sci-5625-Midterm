@@ -1,4 +1,4 @@
-### Set up packages
+### Set up package structure
 rm(list=ls())
 library(devtools)
 library(roxygen2)
@@ -83,10 +83,13 @@ check(current.code)
 
 ?Likelihood
 ?Probability
+?Prior
 ?EAP #error says rdFile must be a single element character vector?
 
-## Examples
+## Examples of package functionality
+
 testSubject = new("Rasch", name = "Benny", difficulty = sample(c(.2, .4, 1.7, 1.3, 1.6, 1.6, 5.6), 10, replace = TRUE), answers = sample(0:1, 10, replace=TRUE))
+
 Probability(raschObj = testSubject, theta = 2) 
 # probability may not make sense in context because I don't know what the range of theta and difficulty is supposed to be
 
@@ -99,3 +102,4 @@ EAP(testSubject)
 # I can't figure out what the error message means so it's not running, but it seems like it should work.
 
 print(testSubject)
+# Almost certain would work if EAP didn't have an error in it
