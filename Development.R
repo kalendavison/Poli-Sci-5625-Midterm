@@ -44,6 +44,12 @@ Likelihood = function(raschObj, theta){
   return(likelihood)
 }
 
+# Prior function
+Prior <- function(theta){
+  height <- dnorm(x = theta, mean = 0, sd = 3)
+  return(height)
+}
+
 #Build and check out the package
 package.skeleton()
 setwd("/Users/kalendavison/Desktop/Applied Statistical Programming/GitHub/Poli-Sci-5625-Midterm/Master") #directory above package
@@ -60,4 +66,4 @@ Probability(raschObj = testSubject, theta = 2)
 Likelihood(testSubject, .8) 
 #seems to work but again doesn't  make sense in context because I'm not sure what scale the difference and theta should be on. 
 
-
+Prior(theta = 1)
