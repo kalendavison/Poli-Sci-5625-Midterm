@@ -69,7 +69,7 @@ EAP = function(raschObj, lower = 6, upper = 6){
   return(ability_estimate)
 }
 
-EAP(testSubject)
+EAP(testSubject) #do not understand why it isn't working
 
 #Build and check out the package
 package.skeleton()
